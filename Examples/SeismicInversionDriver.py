@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -91,6 +92,8 @@ tdis = abs(trow - tcol)
 sigmatime = np.exp(-(tdis / corrlength) ** 2)
 sigma0 = np.cov(np.hstack([np.log(Vp), np.log(Vs), np.log(Rho)]).T)
 sigmaprior = np.kron(sigma0, sigmatime)
+print("sigma0:",sigma0)
+print("sigmaprior:",sigmaprior)
 
 #% Seismic inversion
 Seis = np.vstack([Snear, Smid, Sfar])
