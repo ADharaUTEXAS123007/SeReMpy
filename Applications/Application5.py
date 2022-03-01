@@ -77,7 +77,6 @@ mprior = np.vstack([Phiprior[:,np.newaxis], Swprior[:,np.newaxis]])
 d = np.vstack([Snear,Smid,Sfar])
 
 
-
 #% Spatial correlation matrix
 corrlength = 5 * dt
 trow = np.matlib.repmat(np.arange(0, nm * dt, dt), nm, 1)
@@ -85,6 +84,7 @@ tcol = np.matlib.repmat(trow[0,:].reshape(nm,1), 1, nm)
 tdis = abs(trow - tcol)
 sigmatime = np.exp(-(tdis / (corrlength/3)) ** 2)
 sigma0 = np.cov(np.hstack([Phi-Phiprior[:,np.newaxis], Sw-Swprior[:,np.newaxis]]).T)
+print("sigma0 :", sigma0)
 sigmaprior = np.kron(sigma0, sigmatime)
 InvCovmatrixPrior = np.linalg.pinv(sigmaprior)
 
